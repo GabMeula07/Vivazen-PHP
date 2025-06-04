@@ -1,0 +1,11 @@
+
+
+services:
+  php:
+    build: .
+    ports:
+      - "8888:80"
+    volumes:
+      - ./src:/var/www/html
+    environment:
+      - PHP_MEMORY_LIMIT=512M
