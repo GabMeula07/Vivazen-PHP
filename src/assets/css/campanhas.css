@@ -1,0 +1,241 @@
+.apresentacao {
+  background: var(--background-secondary);
+  max-width: 900px;
+  margin: 8rem auto 2rem auto;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px var(--primary-green-20);
+  padding: 32px 36px 24px 36px;
+  text-align: center;
+}
+
+.apresentacao h2 {
+  color: var(--deep-green);
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.apresentacao p {
+  color: var(--text-dark);
+  margin: 8px 0;
+  font-size: 1.08rem;
+}
+
+.apresentacao .info {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.apresentacao .info div {
+  background: var(--primary-green-40);
+  border-radius: 10px;
+  padding: 16px 24px;
+  min-width: 220px;
+  box-shadow: 0 1px 4px var(--primary-green-20);
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.campanhas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 28px;
+}
+
+.campanha {
+  background: var(--off-white);
+  border-radius: 14px;
+  box-shadow: 0 2px 8px var(--primary-green-40);
+  padding: 22px 18px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+}
+
+.campanha:hover {
+  box-shadow: 0 4px 18px var(--deep-green-20);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.campanha img {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  object-fit: cover;
+  height: 120px;
+  background: var(--primary-green-20);
+}
+
+.campanha h3 {
+  margin: 0 0 8px 0;
+  color: var(--deep-green);
+  font-size: 1.18rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.campanha p {
+  color: var(--text-dark);
+  font-size: 1rem;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.saiba-mais-btn {
+  background: var(--deep-green);
+  color: var(--text-white);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+  box-shadow: 0 1px 4px var(--deep-green-20);
+}
+
+.saiba-mais-btn:hover {
+  background: var(--deep-green-80);
+}
+
+.add-btn {
+  display: block;
+  margin: 36px auto 0 auto;
+  background: var(--primary-green);
+  color: var(--text-dark);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 1px 4px var(--primary-green-40);
+}
+
+.add-btn:hover {
+  background: var(--deep-green);
+  color: var(--text-white);
+}
+
+/* Modal */
+.modal-bg {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(35, 40, 38, 0.25);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: var(--off-white);
+  border-radius: 14px;
+  max-width: 400px;
+  width: 90%;
+  padding: 28px 24px 18px 24px;
+  box-shadow: 0 4px 24px var(--deep-green-40);
+  text-align: center;
+  position: relative;
+  animation: modalIn 0.2s;
+}
+
+@keyframes modalIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal img {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  object-fit: cover;
+  height: 120px;
+  background: var(--primary-green-20);
+}
+
+.modal h3 {
+  color: var(--deep-green);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.modal p {
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+}
+
+/* Fade effect */
+.fade-element {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-element {
+  transform: translateY(50px);
+}
+
+.fade-element.left {
+  transform: translateX(-50px);
+}
+
+.fade-element.right {
+  transform: translateX(50px);
+}
+
+.fade-element.visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+@media (max-width: 600px) {
+  .apresentacao,
+  .container {
+    padding: 0 4px;
+  }
+
+  .apresentacao .info {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .modal {
+    padding: 18px 6px 12px 6px;
+  }
+}
