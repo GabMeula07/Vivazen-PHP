@@ -1,0 +1,220 @@
+h3 {
+  width: 80%;
+  background-color: aquamarine;
+  padding: 15px;
+}
+
+section {
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  padding-left: 4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: start;
+  overflow: hidden;
+
+  background: linear-gradient(
+      to right,
+      rgba(0, 30, 5, 0.9),
+      rgba(41, 116, 54, 0) 90%
+    ),
+    url("../img/fundos/fundo-home.png");
+  background-size: cover;
+}
+
+section h1 {
+  color: var(--text-light);
+  font-size: 35pt;
+  margin-bottom: 0.3rem;
+}
+section p {
+  color: var(--text-light);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  width: 38rem;
+  margin-bottom: 2.5rem;
+}
+section button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: solid 3px var(--text-dark);
+  background-color: var(--off-white);
+  color: var(--text-dark);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  transition: all 0.3s ease-in-out;
+  font-weight: 700;
+}
+
+section button:hover {
+  transform: translateY(-5px);
+  border: solid 3px var(--deep-green);
+  background-color: transparent;
+  color: var(--deep-green);
+}
+
+/* benef */
+
+.benef {
+  padding: 3rem 2rem;
+  background: var(--off-white);
+  min-height: 60dvh;
+  height: auto;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 5rem;
+}
+
+.benef h2 {
+  color: var(--text-dark);
+  font-size: 22pt;
+}
+
+.container_benef {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+
+  color: var(--deep-green);
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.d1 {
+  transition-delay: 0.5s;
+}
+
+.d2 {
+  transition-delay: 0.6s;
+}
+
+.d3 {
+  transition-delay: 0.7s;
+}
+
+.d4 {
+  transition-delay: 0.8s;
+}
+
+.card i {
+  display: block;
+}
+
+.card {
+  display: flex;
+  flex-direction: column; /* Coloca ícone em cima e texto embaixo */
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  height: 150px; /* Defina uma altura fixa se necessário */
+  width: 250px; /* Defina uma largura fixa se necessário */
+  border-radius: 30px;
+  background: #f6f8f4;
+  box-shadow: 20px 20px 60px #b4b5b2, -20px -20px 60px #ffffff;
+  padding: 1.3rem 0rem;
+  gap: 0.5rem 0;
+}
+
+.card h3 {
+  background-color: transparent;
+  color: var(--text-dark);
+  width: max-content;
+  font-weight: 500;
+}
+
+/* desc */
+
+section.desc {
+  width: 100%;
+  height: 100vh;
+  background: #dddeda;
+}
+
+.desc {
+  padding: 0 4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.desc h3 {
+  background-color: transparent;
+  font-size: 28pt;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+.desc p {
+  color: var(--text-dark);
+}
+.desc span {
+  color: var(--deep-green);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+.desc img {
+  border-radius: 20px;
+  width: 25rem;
+}
+
+@media screen and (width < 990px) {
+  section {
+    padding: 2rem;
+  }
+  section h1 {
+    width: 100%;
+    font-size: 45pt;
+  }
+  section.container-home p {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    width: 100%;
+    font-size: 17pt;
+  }
+  .desc {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .desc div {
+    width: 100%;
+  }
+  .desc h3 {
+    font-size: 25pt;
+  }
+  .desc p {
+    width: 100%;
+  }
+}
+
+@media screen and (width < 690px) {
+  section {
+    padding: 2rem;
+  }
+  section h1 {
+    width: 100%;
+    font-size: 30pt;
+  }
+  section.container-home p {
+    text-shadow: 5px 5px 7px rgba(0, 0, 0, 0.8);
+    width: 100%;
+    font-size: 11.78pt;
+  }
+  section.desc {
+    height: max-content;
+    padding: 3rem;
+  }
+  .desc h3 {
+    font-size: 20pt;
+  }
+  .desc p {
+    font-size: 11pt;
+  }
+  .desc img {
+    width: 18rem;
+  }
+}
