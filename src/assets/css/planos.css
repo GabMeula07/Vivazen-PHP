@@ -1,0 +1,174 @@
+main {
+  padding: 4.6875rem 0;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.dots-container {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--primary-green-60);
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: var(--primary-green);
+}
+
+.container {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+.container img {
+  border-radius: 19px;
+  width: 80%;
+  align-self: center;
+}
+
+.container h1 {
+  font-size: 30pt;
+  margin-bottom: 0.2rem;
+  color: var(--deep-green);
+}
+
+.container p {
+  font-size: 1rem;
+  color: var(--dark-gray);
+}
+
+.plans {
+  margin: 2rem auto;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.plan-card {
+  background-color: var(--primary-green-20);
+  border-radius: 10px;
+  padding: 2rem 1rem;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex: 1;
+}
+
+.plan-card h2 {
+  margin-bottom: 1rem;
+  color: var(--deep-green);
+}
+
+.plan-description {
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  align-self: center;
+}
+
+.features {
+  text-align: left;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  align-self: center;
+  color: var(--dark-gray);
+}
+
+.features i {
+  margin-right: 8px;
+  color: var(--deep-green-60);
+}
+
+.btn {
+  background-color: var(--deep-green);
+  border: none;
+  color: var(--text-white);
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  justify-self: center;
+  margin-top: auto;
+  align-self: center;
+}
+
+.btn:hover {
+  background-color: var(--deep-green-80);
+}
+
+@media (max-width: 768px) {
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media screen and (width <= 900px) {
+  .plans {
+    width: 80%;
+  }
+  .container p {
+    font-size: 11pt;
+  }
+}
+
+@media screen and (width <= 600px) {
+  .plans {
+    flex-direction: column;
+    width: 100%;
+    justify-content: stretch;
+    margin: 2rem auto;
+    padding: 0 2rem;
+  }
+  .plan-card {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+}
