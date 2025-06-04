@@ -2,6 +2,9 @@
 $title = "Vivazen";
 include 'templates/header.php';
 ?>
+<link rel="stylesheet" href="./assets/css/index.css">
+<link rel="stylesheet" href="./assets/css/footer.css">
+<link rel="stylesheet" href="./assets/css/header.css">
 <link rel="stylesheet" href="./assets/css/home.css">
 </head>
 
@@ -59,7 +62,37 @@ include 'templates/header.php';
         </div>
         <img class="fade-element right" src=".\assets\img\artesobre.png" alt="">
     </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll(".fade-element");
 
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        } else {
+                            entry.target.classList.remove("visible");
+                        }
+                    });
+                },
+                {
+                    threshold: 0.2,
+                    rootMargin: "0px",
+                }
+            );
+
+            elements.forEach((el) => {
+                observer.observe(el);
+            });
+        });
+
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("out", window.scrollY > 0);
+        });
+
+    </script>
     <?php
     include 'templates/footer.php';
 
