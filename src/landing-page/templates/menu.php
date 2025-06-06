@@ -1,11 +1,11 @@
 <header class="<?php echo isset($classeMenu) ? $classeMenu : ' ' ?>" />
 <a href="/">
-  <img src="/assets/img/logo2.png" alt="" class="logo" />
+  <img src="../assets/img/logo2.png" alt="" class="logo" />
 </a>
 <nav>
-  <a class="link-header" href="/unidades/">Unidades</a>
-  <a class="link-header" href="/campanhas/">Campanhas</a>
-  <a class="link-header" href="/planos/">Planos</a>
+  <a class="link-header" href="/landing-page/unidades/">Unidades</a>
+  <a class="link-header" href="/landing-page/campanhas/">Campanhas</a>
+  <a class="link-header" href="/landing-page/planos/">Planos</a>
   <a class="entrar" href="/login/">Entrar</a>
 </nav>
 <button class="menu" onclick="toggleMenu(this)">
@@ -20,9 +20,9 @@
 
 <nav class="mobile-nav">
   <ul>
-    <li><a href="/unidades/">Unidades</a></li>
-    <li><a href="/campanhas/">Campanhas</a></li>
-    <li><a href="/planos/">Planos</a></li>
+    <li><a href="/landing-page/unidades/">Unidades</a></li>
+    <li><a href="/landing-page/campanhas/">Campanhas</a></li>
+    <li><a href="/landing-page/planos/">Planos</a></li>
     <li><a href="/login/">Entrar</a></li>
   </ul>
 </nav>

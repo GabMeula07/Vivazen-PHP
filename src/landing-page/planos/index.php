@@ -29,7 +29,7 @@
     <div class="carousel-container">
       <div class="carousel">
         <div class="carousel-slide">
-          <img src="/assets/img/Planos do site[1]/1.png" alt="" />
+          <img src="../assets/img/Planos do site[1]/1.png" alt="" />
         </div>
         <div class="carousel-slide">
           <img src="../assets/img/Planos do site[1]/2.png" alt="" />
@@ -76,7 +76,7 @@
 
         <div class="plan-card">
           <h2>Plano Green PRO+</h2>
-          <img src="/assets/img/Cartãos da clínica[1]/2.png" alt="">
+          <img src="../assets/img/Cartãos da clínica[1]/2.png" alt="">
           <div class="plan-description">
             Completo para quem busca atendimento personalizado e benefícios exclusivos.
           </div>

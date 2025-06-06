@@ -21,7 +21,7 @@ include "../templates/header.php";
         <!-- Unidade 1 -->
         <div class="card ">
           <div class="imagem">
-            <img src="/assets/img/Brooklin.png" alt="Fachada da unidade Brooklin" />
+            <img src="../assets/img/Brooklin.png" alt="Fachada da unidade Brooklin" />
           </div>
           <p>
             <strong>Brooklin</strong> <br />Horário: 08h - 18h <br />Dias:
@@ -36,7 +36,7 @@ include "../templates/header.php";
         <!-- Unidade 2 -->
         <div class="card ">
           <div class="imagem">
-            <img src="/assets/img/Tatuape.png" alt="Fachada da unidade Tatuapé" />
+            <img src="../assets/img/Tatuape.png" alt="Fachada da unidade Tatuapé" />
           </div>
           <p>
             <strong>Tatuapé</strong> <br />Horário: 08h - 18h <br />Dias:
@@ -51,7 +51,7 @@ include "../templates/header.php";
         <!-- Unidade 3 -->
         <div class="card ">
           <div class="imagem">
-            <img src="/assets/img/Capao.png" alt="Fachada da unidade Capão Redondo" />
+            <img src="../assets/img/Capao.png" alt="Fachada da unidade Capão Redondo" />
           </div>
           <p>
             <strong>Capão Redondo</strong> <br />Horário: 08h - 18h
