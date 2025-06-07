@@ -1,21 +1,18 @@
 <?php
 
 require_once "../core/database.php";
+require_once "../core/router.php";
+require_once "../controllers/test_database.php";
 
-$rota = $_SERVER['REQUEST_URI'];
+$router = new Router();
 
 
-if ($rota == "/web-app/api/test-conection/") {
-    $db = new Database();
-    $conexao = $db->getConnection();
-    // Verifica se a conexão foi bem-sucedida
-    if (!$conexao) {
-        die("Falha na conexão com o banco de dados."); // Assumindo que você tem um método para pegar o erro
-    } else {
-        echo "Conexão com o banco de dados estabelecida com sucesso!";
-    }
+$router->add("get", "/web-app/api/test-conection", function () {
+    $testController = new TestConnectionController();
+    $testController->test();
+});
 
-} else {
-    // Rota não encontrada
-    echo "Rota não encontrada";
-}
+
+
+
+$router->dispath($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
