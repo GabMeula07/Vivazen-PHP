@@ -2,17 +2,17 @@
 
 class Database
 {
-    private $host = "";
-    private $username = "";
-    private $db_name = "";
-    private $password = "";
+    private $host = "mysql";
+    private $username = "vivazen";
+    private $db_name = "vivazen_db";
+    private $password = "password";
     public $conn;
 
     public function getConnection(): ?PDO
     {
         try {
             $this->conn = new PDO(
-                "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
+                "mysql:host=" . $this->host . ";port=3306;dbname=" . $this->db_name,
                 $this->username,
                 $this->password
             );
