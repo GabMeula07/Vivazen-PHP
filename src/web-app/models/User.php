@@ -54,8 +54,40 @@ class User
         return $this->id;
     }
 
+    public function validade_user()
+    {
+        $sqlUsuario = "SELECT email, cpf from Usuario";
+        $stmt = $this->db->query($sqlUsuario);
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($users as $user) {
+            if ($user['email'] === $this->getEmail()) {
+                http_response_code(422);
+                $response = [
+                    'error_code' => 422,
+                    'message' => "Esse Email já está cadastrado."
+                ];
+                echo json_encode($response);
+                exit;
+            }
+            if ($user['cpf'] === $this->cpf->__toString()) {
+                http_response_code(422);
+                $response = [
+                    'error_code' => 422,
+                    'message' => "Esse CPF já está cadastrado."
+                ];
+                echo json_encode($response);
+                exit;
+            }
+        }
+
+    }
+
     public function createUser()
     {
+
+        $this->validade_user();
+
         $sqlUsuario =
             "INSERT INTO Usuario (
                 nome, data_nascimento, email, senha, cpf, tipo_usuario
