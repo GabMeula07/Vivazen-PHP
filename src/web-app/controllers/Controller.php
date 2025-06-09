@@ -8,7 +8,7 @@ class Controller
         $missing = [];
 
         foreach ($required as $field) {
-            if (empty($post[$field])) {
+            if (!isset($post[$field]) || $post[$field] === '') {
                 $missing[] = $field;
             }
         }
