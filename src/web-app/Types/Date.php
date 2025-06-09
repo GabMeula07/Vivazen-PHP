@@ -13,15 +13,21 @@ class Date
 
 
             if ($this->value > new DateTime()) {
+                http_response_code(422);
+
                 throw new InvalidArgumentException("Data de nascimento não pode ser futura");
             }
             $idadeMinima = new DateTime('-18 years');
 
             if ($this->value > $idadeMinima) {
+                http_response_code(422);
+
                 throw new InvalidArgumentException("Idade mínima é 18 anos");
             }
 
         } catch (Exception $e) {
+            http_response_code(500);
+
             throw new InvalidArgumentException("Data inválida: {$data}");
         }
     }

@@ -9,6 +9,7 @@ class CPF
         $cpf = $this->limpar($cpf);
 
         if (!$this->validar($cpf)) {
+            http_response_code(422);
             throw new InvalidArgumentException("CPF inválido.");
         }
 
