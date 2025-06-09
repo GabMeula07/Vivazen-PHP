@@ -105,13 +105,11 @@ class User
         $smtm->bindValue(":tipo_usuario", $this->type);
 
 
-        try {
-            $smtm->execute();
-            $this->id = $this->db->lastInsertId();
 
-        } catch (Throwable $e) {
-            $this->db->rollBack();
-        }
+        $smtm->execute();
+        $this->id = $this->db->lastInsertId();
+
+
     }
 
     public function getValues(): array

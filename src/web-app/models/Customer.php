@@ -8,7 +8,7 @@ class Customer
 
 
 
-    public function __construct(PDO $db, User $user, bool $plus)
+    public function __construct(PDO $db, User $user, int $plus)
     {
         $this->plus = $plus;
         $this->user = $user;
@@ -25,16 +25,14 @@ class Customer
 
         $stmt = $this->db->prepare($sqlQuerie);
 
-        $stmt->bindValue(':userId', $this->user->getId());
-        $stmt->bindValue(':plus', $this->plus);
+        $stmt->bindValue(':userId', $this->user->getId(), PDO::PARAM_INT);
+        $stmt->bindValue(':plus', $this->plus, PDO::PARAM_INT);
 
-        try {
-            $stmt->execute();
-            return $this->plus;
 
-        } catch (Throwable $e) {
-            $this->db->rollBack();
-        }
+        $stmt->execute();
+        return $this->plus;
+
+
 
     }
 
