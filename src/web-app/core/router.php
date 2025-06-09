@@ -6,11 +6,18 @@ class Router
 
     public function add($method, $url, $callback)
     {
+        $pattern = preg_replace(
+            '/\{[a-zA-Z_][a-zA-Z0-9_]*\}/',
+            '([a-zA-Z0-9_]+)',
+            $url
+        );
+        $pattern = "#^$pattern$#";
+
         $this->routes[] = [
             'method' => strtoupper($method),
             'url' => $url,
+            'pattern' => $pattern,
             'callback' => $callback,
-
         ];
     }
 
@@ -19,14 +26,15 @@ class Router
         $path = parse_url($request_uri, PHP_URL_PATH);
 
         foreach ($this->routes as $route) {
-            if (
-                $route["url"] === $path
-                && $route["method"] === strtoupper($request_method)
-            ) {
-                return call_user_func($route["callback"]);
+            if ($route["method"] === strtoupper($request_method)) {
+                if (preg_match($route['pattern'], $path, $matches)) {
+                    array_shift($matches);
+                    return call_user_func_array($route["callback"], $matches);
+                }
             }
         }
-
+        http_response_code(404);
+        include '../views/404.php';
+        exit;
     }
-
 }
