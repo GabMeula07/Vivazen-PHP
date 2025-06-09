@@ -41,11 +41,11 @@ class CustomerController extends Controller
             );
 
             $user->createUser();
-
+            $plus = isset($post['plus']) && $post['plus'] !== '' ? (int) $post['plus'] : 0;
             $customer = new Customer(
                 $pdo,
                 $user,
-                $post['plus']
+                $plus
             );
 
             $plus = $customer->createCustomer();
@@ -61,10 +61,16 @@ class CustomerController extends Controller
 
         } catch (Throwable $e) {
             http_response_code(422);
+
+            if ($pdo->inTransaction()) {
+                $pdo->rollBack();
+            }
+
             $response = [
                 "error_code" => 422,
                 "message" => "Erro ao criar o usuário: " . $e->getMessage()
             ];
+
             echo json_encode($response);
             exit;
         }
