@@ -5,55 +5,93 @@ require_once "../Types/CPF.php";
 require_once "../Types/Date.php";
 
 
+class UserType
+{
+    const CUSTOMER = "customer";
+    const PROFESSIONAL = "professional";
+    const ADM = "admin";
+}
+
+
 class User
 {
-    private Email $email;
-    private CPF $cpf;
-    private Date $data_nascimento;
-    private string $name = "";
-    private string $password = "";
-
     private $db;
+    private int $id;
+    private string $name = "";
+    private Email $email;
+    private string $password = "";
+    private CPF $cpf;
+    private Date $birth_date;
+    private string $type;
 
-    protected function __construct(
+    public function __construct(
+        PDO $database,
         string $name,
-        string $sobrenome,
+        string $last_name,
         string $email,
+        string $password,
+        string $birth_date,
         string $cpf,
-        Database $database,
-        Date $data_nascimento,
-        string $password
+        string $type = null,
+
     ) {
-        $this->name = "$name $sobrenome";
+        $this->name = "$name $last_name";
         $this->email = new Email($email);
-        $this->data_nascimento = new Date($data_nascimento);
+        $this->birth_date = new Date($birth_date);
         $this->cpf = new CPF($cpf);
-        $this->password = password_hash($password);
+        $this->password = password_hash($password, PASSWORD_ARGON2I);
         $this->db = $database;
+        $this->type = $type;
+    }
+
+    public function getEmail()
+    {
+        return $this->email->getValue();
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function createUser()
     {
-        $this->db->conn->beginTransaction();
-
         $sqlUsuario =
             "INSERT INTO Usuario (
-                nome, data_nascimento, email, senha, cpf
+                nome, data_nascimento, email, senha, cpf, tipo_usuario
             ) VALUES (
-                :nome, :data_nascimento, :email, :senha,  :cpf
+                :nome, :data_nascimento, :email, :senha,  :cpf, :tipo_usuario
             )";
 
-        $smtm = $this->db->conn->prepare($sqlUsuario);
-        $smtm->bindParam(":nome", $this->name);
-        $smtm->bindParam(":data_nascimento", $this->data_nascimento);
-        $smtm->bindParam(":email", $this->email);
-        $smtm->bindParam(":senha", $this->password);
-        $smtm->bindParam(":cpf", $this->cpf);
+        $smtm = $this->db->prepare($sqlUsuario);
 
-        $smtm->execute();
+        $smtm->bindValue(":nome", $this->name);
+        $smtm->bindValue(":data_nascimento", $this->birth_date->getFormatted());
+        $smtm->bindValue(":email", $this->getEmail());
+        $smtm->bindValue(":senha", $this->password);
+        $smtm->bindValue(":cpf", $this->cpf->__toString());
+        $smtm->bindValue(":tipo_usuario", $this->type);
 
-        $this->db->conn = null;
+
+        try {
+            $smtm->execute();
+            $this->id = $this->db->lastInsertId();
+
+        } catch (Throwable $e) {
+            $this->db->rollBack();
+        }
     }
 
+    public function getValues(): array
+    {
+        return [
+            "id" => $this->id,
+            "name" => $this->name,
+            "email" => $this->getEmail(),
+            "cpf" => $this->cpf->__toString(),
+            "birth_date" => $this->birth_date->getFormatted(),
+            "type" => $this->type
+        ];
+    }
 
 }
