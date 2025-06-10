@@ -1,8 +1,8 @@
 <?php
 
-require_once "../Types/Email.php";
-require_once "../Types/CPF.php";
-require_once "../Types/Date.php";
+require_once __DIR__ . "/../Types/Email.php";
+require_once __DIR__ . "/../Types/CPF.php";
+require_once __DIR__ . "/../Types/Date.php";
 
 
 class UserType

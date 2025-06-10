@@ -1,9 +1,9 @@
 <?php
 
-require_once "../core/database.php";
+require_once __DIR__ . "/../core/database.php";
 require_once "Controller.php";
-require_once "../models/User.php";
-require_once "../models/Customer.php";
+require_once __DIR__ . "/../models/User.php";
+require_once __DIR__ . "/../models/Customer.php";
 
 
 class CustomerController extends Controller
