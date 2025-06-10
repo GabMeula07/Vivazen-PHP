@@ -6,6 +6,8 @@ require_once __DIR__ . "/core/auth.php";
 
 require_once __DIR__ . "/controllers/test_database.php";
 require_once __DIR__ . "/controllers/CustomerController.php";
+require_once __DIR__ . "/controllers/AuthController.php";
+
 
 $router = new Router();
 $base_url = "/web-app/api";
@@ -29,15 +31,19 @@ $router->add("POST", "$base_url/auth/", function () {
     $db = new Database();
     $pdo = $db->getConnection();
 
-    $login = AUTH::login($pdo, $_POST['email'], $_POST['password']);
-    if (!$login) {
-        http_response_code(401);
-        $reponse = [
-            "error_code" => 401,
-            "message" => "usuário ou senha inválida"
-        ];
-        echo json_encode($reponse);
-    }
+    $auth = new AuthController();
+    $auth->login($pdo, $_POST);
+
+    exit;
+});
+
+$router->add("POST", "$base_url/logout/", function () {
+    $db = new Database();
+    $pdo = $db->getConnection();
+
+    $auth = new AuthController();
+    $auth->logout();
+
     exit;
 });
 
@@ -50,6 +56,12 @@ $router->add("GET", "/web-app/register/", function () {
 
 $router->add("GET", "/web-app/login/", function () {
     include __DIR__ . '/views/login.php';
+    exit;
+});
+
+
+$router->add("GET", "/web-app/dashboard/", function () {
+    include __DIR__ . '/views/dashboard.php';
     exit;
 });
 
